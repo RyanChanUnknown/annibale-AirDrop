@@ -8,7 +8,7 @@
 python package.py
 ```
 
-输出 `dist/K90-AirDrop-KernelSU-v0.3.6.zip`。即使本地已经暂存固件，默认也不会将它写入公开 ZIP。清单保留固件的固定哈希，安装前只允许该精确路径缺失，导入后与开机时都完整校验。
+输出 `dist/annibale-AirDrop-KernelSU-v0.3.6.zip`。即使本地已经暂存固件，默认也不会将它写入公开 ZIP。清单保留固件的固定哈希，安装前只允许该精确路径缺失，导入后与开机时都完整校验。
 
 仅供本地使用的含固件包：`python package.py --firmware "D:\path\to\ezif.bin"`。输出名称含 `-with-firmware`，不要上传到公开仓库或 Release。`tools/prepare_firmware.py` 仍保留为旧的本地暂存工具，公开打包无需运行它。
 

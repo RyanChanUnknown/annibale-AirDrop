@@ -1,4 +1,4 @@
-REDMI K90 AirDrop 原生互传整合模块 v0.3.6（APK v0.4.5）
+annibale-AirDrop 原生互传整合模块 v0.3.6（APK v0.4.5）
 
 本版替代 v0.2.0 的手动持续待收方案。
 

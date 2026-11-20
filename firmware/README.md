@@ -6,10 +6,10 @@
 
 ## 下载链接与来源
 
-- [v0.3.6 固件获取工具 ZIP](https://github.com/RyanChanUnknown/K90-AirDrop/releases/download/v0.3.6/K90-AirDrop-firmware-tools-v0.3.6.zip)：解压后运行下方命令。
-- [获取脚本源码](https://github.com/RyanChanUnknown/K90-AirDrop/blob/main/firmware/get_amss20.py) / [直接保存脚本](https://raw.githubusercontent.com/RyanChanUnknown/K90-AirDrop/main/firmware/get_amss20.py) / [位置索引 JSON](https://raw.githubusercontent.com/RyanChanUnknown/K90-AirDrop/main/firmware/recipe/S928BXXU6EZIF.json)。单独保存脚本时把索引放进脚本旁的 `recipe/` 目录，建议直接使用工具 ZIP。
+- [v0.3.6 固件获取工具 ZIP](https://github.com/RyanChanUnknown/annibale-AirDrop/releases/download/v0.3.6/annibale-AirDrop-firmware-tools-v0.3.6.zip)：解压后运行下方命令。
+- [获取脚本源码](https://github.com/RyanChanUnknown/annibale-AirDrop/blob/main/firmware/get_amss20.py) / [直接保存脚本](https://raw.githubusercontent.com/RyanChanUnknown/annibale-AirDrop/main/firmware/get_amss20.py) / [位置索引 JSON](https://raw.githubusercontent.com/RyanChanUnknown/annibale-AirDrop/main/firmware/recipe/S928BXXU6EZIF.json)。单独保存脚本时把索引放进脚本旁的 `recipe/` 目录，建议直接使用工具 ZIP。
 - [三星 FUS 下载服务](https://cloud-neofussvr.samsungmobile.com/)：协议服务入口，最终的授权下载地址由脚本协商取得，不是可在浏览器直接下载 bin 的页面。
-- [模块下载页](https://github.com/RyanChanUnknown/K90-AirDrop/releases/latest) 与 [精确固件版本、路径和 SHA-256](../docs/FIRMWARE-LICENSING.md#当前外部输入)。
+- [模块下载页](https://github.com/RyanChanUnknown/annibale-AirDrop/releases/latest) 与 [精确固件版本、路径和 SHA-256](../docs/FIRMWARE-LICENSING.md#当前外部输入)。
 
 ## 自动获取并推送
 

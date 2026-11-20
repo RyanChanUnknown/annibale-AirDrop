@@ -41,7 +41,7 @@ def main():
         if path.is_file():
             files['LICENSES/' + path.name] = path.read_bytes()
     version = next(line.split('=', 1)[1] for line in (MODULE / 'module.prop').read_text(encoding='utf-8').splitlines() if line.startswith('version='))
-    files['SOURCE.txt'] = f'Corresponding sources and per-component licensing:\nhttps://github.com/RyanChanUnknown/K90-AirDrop\nRelease: v{version}\nExternal Samsung firmware is not included in this public archive.\n'.encode()
+    files['SOURCE.txt'] = f'Corresponding sources and per-component licensing:\nhttps://github.com/RyanChanUnknown/annibale-AirDrop\nRelease: v{version}\nExternal Samsung firmware is not included in this public archive.\n'.encode()
     manifest = {name: hashlib.sha256(data).hexdigest() for name, data in files.items() if name != 'customize.sh'}
     manifest[FIRMWARE] = FW_SHA
     data = ''.join(f'{manifest[name]}  {name}\n' for name in sorted(manifest)).encode()
@@ -49,7 +49,7 @@ def main():
     files['files.sha256'] = data
     if firmware is not None:
         files[FIRMWARE] = firmware
-    dest = ROOT / 'dist' / f'K90-AirDrop-KernelSU-v{version}{"-with-firmware" if firmware else ""}.zip'
+    dest = ROOT / 'dist' / f'annibale-AirDrop-KernelSU-v{version}{"-with-firmware" if firmware else ""}.zip'
     dest.parent.mkdir(exist_ok=True)
     with zipfile.ZipFile(dest, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in sorted(files):

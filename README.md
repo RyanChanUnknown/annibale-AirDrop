@@ -1,4 +1,4 @@
-# REDMI K90 AirDrop
+# annibale-AirDrop
 
 REDMI K90（`annibale`）原生小米互传 AirDrop 后端移植。通过 KernelSU / SukiSU 加载无线桥接，LSPosed 兼容原生小米互传；保留原 APK，不修改或重新签名小米互传。
 
@@ -32,13 +32,13 @@ REDMI K90（`annibale`）原生小米互传 AirDrop 后端移植。通过 Kernel
 
 [Releases](../../releases) 提供 **可直接交给 KernelSU 安装的 ZIP，已集成兼容 APK，不含外部固件**。无需自己打包。
 
-1. 下载并解压 [固件获取工具 ZIP](https://github.com/RyanChanUnknown/K90-AirDrop/releases/download/v0.3.6/K90-AirDrop-firmware-tools-v0.3.6.zip)，在电脑运行以下命令，从三星官方服务器获取并校验 S24 Ultra EZIF 固件，再推送到手机下载目录：
+1. 下载并解压 [固件获取工具 ZIP](https://github.com/RyanChanUnknown/annibale-AirDrop/releases/download/v0.3.6/annibale-AirDrop-firmware-tools-v0.3.6.zip)，在电脑运行以下命令，从三星官方服务器获取并校验 S24 Ultra EZIF 固件，再推送到手机下载目录：
 
 ```powershell
 python firmware/get_amss20.py --push
 ```
 
-2. 退出 Apple 互传页面、等待原厂 Wi-Fi 恢复，在 KernelSU / SukiSU Ultra 管理器安装 `K90-AirDrop-KernelSU-v0.3.6.zip`。安装器检查硬件和版本，导入固件并自动安装 APK。升级时自动复用旧模块中哈希匹配的固件。
+2. 退出 Apple 互传页面、等待原厂 Wi-Fi 恢复，在 KernelSU / SukiSU Ultra 管理器安装 `annibale-AirDrop-KernelSU-v0.3.6.zip`。安装器检查硬件和版本，导入固件并自动安装 APK。升级时自动复用旧模块中哈希匹配的固件。
 3. 重启，在 LSPosed 激活“K90 AirDrop”，作用域仅选“小米互传”。无需单独给兼容 APK 授予 root。不支持 TWRP / Recovery 安装。
 
 也可以自行准备匹配文件，命名 `s24u-amss20.bin` 放到手机 `/sdcard/Download/`。固定 SHA-256：
