@@ -75,5 +75,3 @@ python firmware/get_amss20.py --push
 感谢 [ha0xin/houji-airdrop](https://github.com/ha0xin/houji-airdrop)、[AdenXie/pandora-airdrop](https://github.com/AdenXie/pandora-airdrop)、[MiCode](https://github.com/MiCode) 及 [t4t5/owly](https://github.com/t4t5/owly) 的实现与源码。
 
 新增兼容及打包代码沿用 GPL-2.0-only；已有文件的版权与许可证声明优先。各组件边界及保留的许可证见 [NOTICE.md](NOTICE.md) 和 [LICENSES](LICENSES)。
-
-下载annibale开头的文件就行。K90开头的是老文件，忘了删
