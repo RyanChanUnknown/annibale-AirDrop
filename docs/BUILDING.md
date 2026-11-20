@@ -2,14 +2,15 @@
 
 ## 打包已验证的运行文件
 
-仓库保留可再分发的运行文件及已经签名的兼容 APK。外部固件不在公开仓库：
+仓库保留运行文件及已经签名的兼容 APK，各组件许可单独适用。默认生成不含外部固件、但可直接安装的公开模块：
 
 ```powershell
-python tools/prepare_firmware.py "D:\path\to\ezif.bin"
 python package.py
 ```
 
-固件必须符合 README 中的固定 SHA-256。`prepare_firmware.py` 只在哈希正确时复制到 Git 忽略的路径；`package.py` 再核对载荷清单，生成 `files.sha256` 和可安装 ZIP。
+输出 `dist/K90-AirDrop-KernelSU-v0.3.6.zip`。即使本地已经暂存固件，默认也不会将它写入公开 ZIP。清单保留固件的固定哈希，安装前只允许该精确路径缺失，导入后与开机时都完整校验。
+
+仅供本地使用的含固件包：`python package.py --firmware "D:\path\to\ezif.bin"`。输出名称含 `-with-firmware`，不要上传到公开仓库或 Release。`tools/prepare_firmware.py` 仍保留为旧的本地暂存工具，公开打包无需运行它。
 
 ## 编译兼容 APK
 

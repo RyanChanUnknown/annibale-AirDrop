@@ -48,6 +48,16 @@ verify_package() {
  check_hash 2af77172c368557f85df2286c955a9122de05210e9ccd340de2bf4d75c9209f8 "$native_path" || { fail "Requires MIShare 5.5.0_20261029_1004 (50500)"; return 1; }
  /data/adb/ksu/bin/ksud sepolicy check 'allow platform_app_36 default_android_service service_manager { find }' || { fail "Unsupported policy API"; return 1; }
  /data/adb/ksu/bin/ksud sepolicy check 'deny platform_app_36 default_android_service service_manager { find }' || { fail "Unsupported policy API"; return 1; }
- (cd "$package_dir" && sha256sum -c files.sha256) || { fail "Archive checksum mismatch"; return 1; }
+ verify_archive "$package_dir" "${2:-complete}" || return 1
  echo COMPATIBILITY_PASS
+}
+
+# The public archive omits exactly one external input. Its expected digest is
+# still present in files.sha256; boot/runtime always verify the complete list.
+verify_archive() {
+ if test "${2:-complete}" = external-pending; then
+  (cd "$1" && sed '\|  payload/firmware/ezif.bin$|d' files.sha256 | sha256sum -c -) || { fail "Archive checksum mismatch"; return 1; }
+ else
+  (cd "$1" && sha256sum -c files.sha256) || { fail "Archive checksum mismatch"; return 1; }
+ fi
 }

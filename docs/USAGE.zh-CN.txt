@@ -1,8 +1,9 @@
-REDMI K90 AirDrop 原生互传整合模块 v0.3.5（APK v0.4.5）
+REDMI K90 AirDrop 原生互传整合模块 v0.3.6（APK v0.4.5）
 
 本版替代 v0.2.0 的手动持续待收方案。
 
 安装：
+公开 ZIP 不含三星固件。先运行 python firmware/get_amss20.py --push，或把匹配哈希的 s24u-amss20.bin 放到 /sdcard/Download/。升级时自动复用旧模块的匹配固件。固件不匹配会在安装 APK 前中止。
 在 KernelSU / SukiSU Ultra 管理器内安装 ZIP，重启后在 LSPosed 启用“K90 AirDrop”，作用域只选“小米互传”（com.miui.mishare.connectivity）。首次激活后重新打开小米互传。
 APK 由刷入脚本自动安装，无需单独给 APK 授予 root。
 此包用于 KernelSU / SukiSU 模块管理器，不支持 TWRP / Recovery。

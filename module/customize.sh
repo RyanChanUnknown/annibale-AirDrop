@@ -1,7 +1,11 @@
 SKIPMOUNT=true
 . "$MODPATH/verify.sh"
 ui_print "- Checking hardware, OS, ABI, WLAN, framework and payload..."
-verify_package "$MODPATH" || abort "! Compatibility failed; no APK changes were made."
+verify_package "$MODPATH" external-pending || abort "! Compatibility failed; no APK changes were made."
+. "$MODPATH/import-firmware.sh"
+ui_print "- Importing verified external firmware (or reusing previous installation)..."
+import_firmware "$MODPATH" || abort "! Firmware missing or incompatible; no APK changes were made."
+verify_archive "$MODPATH" || abort "! Complete payload verification failed; no APK changes were made."
 set_perm_recursive "$MODPATH" 0 0 0700 0600
 for script in action.sh backend-action.sh post-fs-data.sh service.sh bootstrap.sh uninstall.sh; do set_perm "$MODPATH/$script" 0 0 0700; done
 apk_stage=$(mktemp /data/local/tmp/annibale-apk.XXXXXX) || abort "! Cannot stage APK."

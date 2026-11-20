@@ -1,12 +1,16 @@
 {
-  "module_version": "0.3.5",
+  "module_version": "0.3.6",
   "apk_version": "0.4.5",
-  "source_files": 6576,
+  "source_files": 6585,
   "checks": [
-    "No token/private signing key/device serial/Wi-Fi SSID/phone display name found; original compiler paths in unchanged runner binary reviewed",
-    "External firmware excluded",
-    "Patched WLAN source matches baseline plus patch",
-    "BYOB rebuilt module entries equal tested private ZIP",
-    "No file reaches GitHub 100 MiB limit"
+    "No token/private key/device identifiers found; unchanged runner compiler paths reviewed previously",
+    "Firmware absent from tracked source and both public ZIP assets",
+    "Full WLAN source unchanged since audited v0.3.5 import",
+    "Public flashable installer: actual KernelSU upgrade, complete integrity and idle startup passed",
+    "Official FUS recipe: 5293504-byte fetch reconstructed 6447168-byte firmware with pinned SHA-256",
+    "Accelerated and standard-library-only AES paths matched expected firmware hash",
+    "Six import fixtures, ten negative compatibility gates and static integrity checks passed",
+    "Downloader antivirus alert documented; no vendor false-positive verdict asserted",
+    "No pyc/cache/EXE wrapper included in firmware tools archive"
   ]
 }

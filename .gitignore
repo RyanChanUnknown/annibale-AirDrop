@@ -2,6 +2,12 @@
 /dist/
 /build/
 /module/payload/firmware/ezif.bin
+s24u-amss20.bin
+*-with-firmware.zip
+*.enc4
+vendor_a.img
+vendor.img
+scan.json
 *.jks
 *.keystore
 *.p12
