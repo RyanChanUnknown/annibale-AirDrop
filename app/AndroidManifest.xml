@@ -1,0 +1,23 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="org.annibale.xoscompat" android:versionCode="9" android:versionName="0.4.5">
+  <uses-sdk android:minSdkVersion="33" android:targetSdkVersion="36" />
+  <application android:label="K90 AirDrop" android:allowBackup="false" android:icon="@drawable/ic_airdrop" android:theme="@android:style/Theme.Material.Light.NoActionBar">
+    <meta-data android:name="xposedmodule" android:value="true" />
+    <meta-data android:name="xposeddescription" android:value="原生 Apple 互传会话兼容与接收页面快捷入口" />
+    <meta-data android:name="xposedminversion" android:value="82" />
+    <meta-data android:name="xposedscope" android:resource="@array/xposed_scope" />
+    <activity android:name=".ControlActivity" android:exported="true">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
+      </intent-filter>
+      <intent-filter>
+        <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+        <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+    </activity>
+    <service android:name=".AirDropTile" android:label="接收 Apple 文件" android:icon="@drawable/ic_airdrop" android:exported="true" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+      <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+    </service>
+  </application>
+</manifest>

@@ -1,0 +1,29 @@
+{
+  "device": "annibale",
+  "wlan_base": {
+    "repository": "https://github.com/MiCode/vendor_qcom_opensource_wlan",
+    "commit": "55250c04057d25d3939ae8334cca6908cde01832",
+    "branch": "annibale-w-oss"
+  },
+  "houji": {
+    "repository": "https://github.com/ha0xin/houji-airdrop",
+    "commit": "353a076f9765df3e6a32358e2dd99b1a128d2211"
+  },
+  "pandora": {
+    "repository": "https://github.com/AdenXie/pandora-airdrop",
+    "commit": "6e7b13bf7e6a866e9cee5f6575b56da023a2314a"
+  },
+  "android_common_kernel": {
+    "repository": "https://android.googlesource.com/kernel/common",
+    "commit": "0908354dac1b8a65a215da1ca0c9c78dcd83014f"
+  },
+  "vendor_kernel_headers": {
+    "repository": "https://github.com/MiCode/Xiaomi_Kernel_OpenSource",
+    "commit": "f66f8c8bcbe38044fab61d44ea7f7c224f82b3ea"
+  },
+  "external_firmware": {
+    "path": "module/payload/firmware/ezif.bin",
+    "sha256": "37d409044902fb5e4eb47aff5c543adb0dfd6a56e4e38ff723feb823bc8b522f",
+    "redistributed": false
+  }
+}

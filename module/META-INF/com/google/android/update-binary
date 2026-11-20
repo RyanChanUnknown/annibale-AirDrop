@@ -1,0 +1,3 @@
+#!/sbin/sh
+echo 'Install this ZIP in the KernelSU/SukiSU manager. Recovery installation is unsupported.'
+exit 1

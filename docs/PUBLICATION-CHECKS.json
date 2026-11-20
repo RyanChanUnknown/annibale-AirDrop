@@ -1,0 +1,12 @@
+{
+  "module_version": "0.3.5",
+  "apk_version": "0.4.5",
+  "source_files": 6576,
+  "checks": [
+    "No token/private signing key/device serial/Wi-Fi SSID/phone display name found; original compiler paths in unchanged runner binary reviewed",
+    "External firmware excluded",
+    "Patched WLAN source matches baseline plus patch",
+    "BYOB rebuilt module entries equal tested private ZIP",
+    "No file reaches GitHub 100 MiB limit"
+  ]
+}

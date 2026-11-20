@@ -1,0 +1,6 @@
+id=annibale_airdrop
+name=REDMI K90 AirDrop 原生互传整合模块
+version=0.3.5
+versionCode=10
+author=K90 port
+description=仅 annibale OS4.0.5.0.XPKCNXM。原生会话自动切换后端，集成 LSPosed APK 与接收页快捷磁贴；开机严格校验。

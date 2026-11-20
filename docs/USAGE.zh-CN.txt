@@ -1,0 +1,58 @@
+REDMI K90 AirDrop 原生互传整合模块 v0.3.5（APK v0.4.5）
+
+本版替代 v0.2.0 的手动持续待收方案。
+
+安装：
+在 KernelSU / SukiSU Ultra 管理器内安装 ZIP，重启后在 LSPosed 启用“K90 AirDrop”，作用域只选“小米互传”（com.miui.mishare.connectivity）。首次激活后重新打开小米互传。
+APK 由刷入脚本自动安装，无需单独给 APK 授予 root。
+此包用于 KernelSU / SukiSU 模块管理器，不支持 TWRP / Recovery。
+
+使用：
+- 文件管理、相册及其他应用：直接在分享菜单选择“分享至 Apple 设备”。原生小米互传会话自动切换无线后端。
+- 接收：点击控制中心“接收 Apple 文件”磁贴，直接进入原生接收页；桌面 K90 AirDrop 图标和 KernelSU 模块操作按钮也打开该页面。
+- 磁贴是页面快捷入口，固定使用普通按钮样式，没有开关状态。旧“AirDrop 待收”磁贴沿用同一组件并更新为新名称。
+- 手动持续待收开关、独立控制服务和页面生命周期强制启停逻辑均已移除。
+- 开机校验通过后，桥接以空闲状态驻留，普通 Wi-Fi 可以正常使用。
+- 进入发送/接收会话时无线由 AirDrop 独占，普通 Wi-Fi 暂时断开。
+- 会话结束、客户端退出或进程死亡后，由原版桥接的约 10 秒宽限机制恢复 Wi-Fi，重连还需数秒；正在传输的会话由原生小米互传管理。
+
+磁贴如何打开内部页面：
+接收设置页在原 APK 中没有向第三方导出。磁贴通过原 APK 公开分享入口启动，LSPosed 兼容代码将本模块明确标记的快捷请求转到原生接收引导，保留原生授权流程。普通分享请求不被修改，不修改或重签小米互传 APK。
+
+严格适配范围：
+- REDMI K90 / annibale / 2510DRK44C
+- QTI SM8750 / sun / qcom / arm64-v8a；PCI 17cb:1107
+- Android 17 / SDK 37
+- OS4.0.5.0.XPKCNXM；vendor OS4.0.5.0.XPKCN
+- 原内核编译身份 6.6.118-android15-8-g0908354dac1b-ab16143355-4k，并核对 /proc/version 完整 SHA-256
+- 原厂 WLAN 模块、固件、已载入 WLAN build-id 必须与实测哈希一致
+- 小米互传 5.5.0_20261029_1004（50500），完整 APK 哈希一致
+- SukiSU Ultra：ksud 4.3.0-r2（uapi 6）
+- LSPosed 2.2.1（7931），Zygisk Next 1.5.3（880），均启用且框架运行
+- SELinux Enforcing
+所有版本只覆盖上述实测组合。安装前应先退出 Apple 互传页面并关闭待收。
+
+升级保护：
+安装时核对硬件、系统、完整内核编译身份、WLAN 驱动/固件、框架版本、小米互传 APK 和模块文件哈希；不匹配即中止，校验通过后才安装集成 APK。
+启动早期核对设备、系统与 /proc/version 完整哈希，开机完成后再次完整校验；失败时创建本模块 disable 标记，阻止桥接及实验无线模块启动。
+启动批准绑定本次 boot_id 和文件清单摘要。无批准时，启动脚本和 KernelSU 操作入口均拒绝执行。
+内核身份采用 /proc/version 和原厂 WLAN 标识，避免 SUSFS 伪装 uname -r 导致误判。
+未来 OTA、内核或必要依赖变化后，需要重新适配和验证，再发布新版；不能直接删掉检查继续载入。
+若手机已有其他签名的同名兼容 APK，安装脚本会报告签名冲突并失败，不强制卸载原应用。
+
+日志：
+/data/adb/annibale-xos/state/early-boot-guard.log
+/data/adb/annibale-xos/state/boot-guard.log
+/data/adb/annibale-xos/state/bootstrap.log
+/data/adb/annibale-xos/state/supervisor.log
+
+源码构建：
+Windows 环境，ANDROID_HOME 指向 Android SDK，build-tools 36.0.0、android-36 平台和 JDK。
+运行 python app/build.py，再运行 python package.py。
+源码包不包含签名私钥。build.py 在无密钥时生成本地测试签名，新签名不能覆盖已安装的 APK；发布升级应保留自己的签名密钥。
+原无线载荷与 XosBridge 二进制沿用已经验证的版本，本版调整启动方式和快捷入口，并在 LSPosed 中为 xos0 的 IPv6 mDNS socket 显式设置发送网卡和 hop limit 255，修复重复搜索依赖对端重新广播的问题。
+只处理小米互传进程中加入 ff02::fb:5353、绑定本地 5353 端口且网卡为 xos0 的多播 socket。保留原生蓝牙广播行为，没有额外的蓝牙待命服务。
+协议及 API 参考：
+https://www.rfc-editor.org/rfc/rfc6762.html#section-11
+https://developer.android.com/reference/java/net/MulticastSocket#setNetworkInterface(java.net.NetworkInterface)
+

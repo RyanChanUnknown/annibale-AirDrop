@@ -1,0 +1,13 @@
+/app/build/
+/dist/
+/build/
+/module/payload/firmware/ezif.bin
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.log
+__pycache__/
+*.pyc
+.env
+.env.*
